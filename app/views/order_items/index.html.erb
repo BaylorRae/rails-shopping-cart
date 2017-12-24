@@ -1,0 +1,26 @@
+<h2>Current Cart</h2>
+
+<table>
+  <thead>
+    <tr>
+      <td>Product</td>
+      <td>Price</td>
+      <td>Quantity</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.product.title %></td>
+        <td><%= number_to_currency item.price %></td>
+        <td><%= item.quantity %></td>
+        <td>
+          <%= form_for item, method: :delete do |f| %>
+            <%= f.submit "Remove" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
